@@ -1,0 +1,134 @@
+header {
+    display: flex;
+    position: sticky; /* TODO */
+    align-items: center;
+    justify-content: space-between;
+    background: none;
+
+    height: 50px;
+    padding: 25px;
+
+    @media screen and (min-width: 1024px) {
+        .lg-hide { display: none;}
+        height: 75px;
+    }
+    
+}
+
+/* Content buttons css */
+header > .content-btns {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+
+    gap: 15px;
+
+    /* For Content buttons, hide on smaller breakpoints */
+    ul {
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+        gap: 25px;
+        position: relative;
+
+        @media screen and (max-width: 1023px) {
+            display: none;
+        }
+
+
+        /* Navbar CSS / Dropdown */
+        li {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: auto;
+            position: relative;
+
+            cursor: pointer;
+
+            span {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+            }
+
+            p, a, .caret-up {
+                transition: all 0.2s ease-in-out;
+            }
+
+            .caret-up {
+                width: 15px;
+            }
+
+            &:hover {
+                p, a, .caret-up {
+                    color: rgba(37, 99, 235, 1); /* blue 600 */
+                }
+                .caret-up {
+                    rotate: 180deg;
+                }
+            }
+
+            /* Dropdown CSS */
+            .dropdown-container {
+                position: absolute;
+                top: 50px;
+                left: 0;
+                width: 200px;
+                
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                background-color: white;
+
+                .dropdown-btn {
+                    display: flex;
+                    padding: 5px 10px;
+                    gap: 5px;
+
+                    > div {
+                        display: flex;
+                        flex-direction: column;
+                    }
+
+                    border-radius: 25px;
+                    transition: 0.2s ease-in-out all;
+                    &:hover {
+                        background-color: rgba(219, 234, 254, 1); /* blue 100 */
+                    }
+                }
+            }
+        }
+    }
+}
+/* Login buttons css */
+header > .login-btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+    @media screen and (max-width: 1023px) {
+        display: none;
+    }
+}
+
+
+
+
+.header-logo {
+    height: 50px;
+    @media screen and (max-width: 1023px) {
+        height: 35px;
+    }
+}
+
+.signup {
+    padding: 10px 15px;
+    border-radius: 25px;
+
+    --tw-bg-opacity: 1;
+    color: white;
+    background-color: rgba(37, 99, 235, 1); /* blue 600 */
+}

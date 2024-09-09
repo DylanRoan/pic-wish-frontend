@@ -1,0 +1,16 @@
+*, body {
+    /* Reset html */
+    margin: 0;
+    padding: 0;
+    
+    /* set font and sizing */
+    box-sizing: border-box;
+    text-decoration: none;
+}
+  
+  /* css for body */
+body {
+    width: 100vw;
+    min-width: 320px;
+    overflow-x: hidden;
+}
