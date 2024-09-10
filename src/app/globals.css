@@ -28,3 +28,7 @@ body {
     text-wrap: balance;
   }
 }
+
+.swiper-slide {
+  height: auto !important;
+}

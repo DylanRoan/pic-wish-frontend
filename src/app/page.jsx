@@ -1,4 +1,4 @@
-import { faArrowRight, faThumbsUp, faUpload } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight, faCommentDots, faThumbsUp, faUpload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import './style.scss'
@@ -13,8 +13,8 @@ export default function Home() {
     <main className="w-screen flex flex-col items-center relative bg-gradient-to-br from-indigo-100 via-white to-blue-100">
 
       {/* Chat icon for mobile layouts */}
-      <div className="sticky bottom-4 right-4 bg-blue-400 rounded-full">
-        <span class="icon-[line-md--chat-filled]"></span>
+      <div className="fixed z-10 bottom-4 right-4 h-16 w-16 bg-blue-400 rounded-full flex items-center justify-center">
+        <FontAwesomeIcon icon={faCommentDots} className="w-full text-white"></FontAwesomeIcon>
       </div>
 
       {/* Main Section */}
@@ -66,22 +66,22 @@ export default function Home() {
         
         {/* Displayed data */}
         <section className="w-[90%] my-24 py-8 rounded-2xl border-[1px] border-solid border-white flex lg:flex-row flex-col justify-center items-center shadow backdrop-blur-xl backdrop-filter">
-            <div className="w-max my-10 mx-8 flex flex-col items-center">
+            <div className="w-max my-6 mx-8 flex flex-col items-center">
               <div className="font-bold text-base"><span className="text-4xl">120</span>M+</div>
               <div className="text-sm text-center">Images Processed</div>
             </div>
 
-            <div className="w-max my-10 mx-8 flex flex-col items-center">
+            <div className="w-max my-6 mx-8 flex flex-col items-center">
               <div className="font-bold text-base"><span className="text-4xl">37</span>M+</div>
               <div className="text-sm text-center">Happy Users</div>
             </div>
 
-            <div className="w-max my-10 mx-8 flex flex-col items-center">
+            <div className="w-max my-6 mx-8 flex flex-col items-center">
               <div className="font-bold text-base"><span className="text-4xl">3</span>Secs</div>
               <div className="text-sm text-center">AI Processing</div>
             </div>
 
-            <div className="w-max my-10 mx-8 flex flex-col items-center">
+            <div className="w-max my-6 mx-8 flex flex-col items-center">
               <div className="font-bold text-base"><span className="text-4xl">10</span>X</div>
               <div className="text-sm text-center">Faster Photo Editing</div>
             </div>
@@ -158,8 +158,8 @@ export default function Home() {
         <aside className="flex flex-1 justify-center">
           <div className="w-4/5">
           <ReactCompareSlider
-            itemOne={<ReactCompareSliderImage src="ai-img-before.png" alt="1"></ReactCompareSliderImage>}
-            itemTwo={<ReactCompareSliderImage src="ai-img-after.jpg" alt="2"></ReactCompareSliderImage>}
+            itemOne={<ReactCompareSliderImage src="https://cfcdn.apowersoft.info/astro/picwish/_astro/portrait-img-before.738c1401.png" alt="1"></ReactCompareSliderImage>}
+            itemTwo={<ReactCompareSliderImage src="https://cfcdn.apowersoft.info/astro/picwish/_astro/portrait-img-after.640a76d2.png" alt="2"></ReactCompareSliderImage>}
             className="w-full h-full overflow-hidden border-2px border-solid border-white rounded-2xl">
           </ReactCompareSlider>
           </div>
@@ -169,12 +169,12 @@ export default function Home() {
       {/* Slideshow - product enhancement */}
       <section className="flex flex-col items-center justify-center h-auto p-12">
         <h1 className="text-center lg:text-4xl text-2xl font-bold lg:w-2/4 w-3/4"><span className="text-blue-600">Automatically enhance</span> your images for personal and business needs</h1>
-        <section className="my-8 mx-4 lg:h-96 h-96 w-screen flex items-center justify-center">
+        <section className="my-8 mx-4 lg:h-96 h-auto w-screen flex items-center justify-center">
           <SwiperSlideshow></SwiperSlideshow>
         </section>
       </section>
       {/* Draggable - User reviews */}
-      <section className="flex flex-col items-center justify-center h-auto w-full">
+      <section className="flex flex-col items-center justify-center h-auto w-full mb-12">
         <h1 className="lg:text-4xl text-2xl font-bold px-12">Over <span className="text-blue-600">100000+</span> users worldwide use PicWish</h1>
         <p className="px-12 mt-4">Ecommerce merchants, influencers, developers, and educational agencies use PicWish to boost their productivity.</p>
         <section className="p-4 w-full h-96">
@@ -192,7 +192,7 @@ export default function Home() {
 
       {/* Posts */}
       <section className="flex flex-col lg:w-4/5 mb-12">
-        <h1 className="lg:text-4xl text-2xl font-bold px-12">Posts | Sharpen image and do more</h1>
+        <h1 className="lg:text-4xl text-2xl font-bold px-8">Posts | Sharpen image and do more</h1>
         <section className="flex lg:flex-row flex-col mt-7 mb-1 gap-8 justify-center items-center">
         <a className="flex flex-col rounded-2xl overflow-hidden shadow lg:w-1/4 w-3/4 bg-white">
             <img className="object-cover" src="https://picwish.com/wp-content/uploads/2024/09/featured-take-pictures-of-the-moon-with-iphone.jpg"></img>
@@ -215,7 +215,7 @@ export default function Home() {
 
       {/* API */}
       <section className="relative w-full flex justify-center">
-        <section className="absolute w-4/5 bg-gradient-to-r from-blue-600 to-blue-400 rounded-2xl lg:p-12 p-4 flex lg:flex-row flex-col">
+        <section className="absolute z-10 w-4/5 bg-gradient-to-r from-blue-600 to-blue-400 rounded-2xl lg:p-12 p-4 flex lg:flex-row flex-col">
           <div className="flex-1 flex flex-col justify-center">
             <h1 className="text-2xl font-bold text-white">Interested in our photo enhancer API?</h1>
             <p className="opacity-70 text-white my-4">Process images automatically in bulk. Speed up your workflow using PicWish API! With just a few lines of code, you can bring this technology into your application.</p>
@@ -227,9 +227,11 @@ export default function Home() {
       </section>
 
       {/* Start Now */}
-      <section className="flex flex-col items-center justify-center py-32 lg:mt-48 md:mt-32 mt-64 w-full bg-gradient-to-b from-gray-50 via-blue-200 to-indigo-200">
-        <h1 className="text-center lg:text-4xl text-2xl font-bold">Ready to enhance image with <span className="text-blue-600">PicWish</span>?</h1>
-        <button className="flex relative items-center justify-center w-52 m-12 p-4 rounded-full text-white font-bold animate-bounce  bg-gradient-to-l from-blue-600 to-blue-400">Start Now</button>
+      <section className="flex relative flex-col items-center justify-center py-60 lg:mt-56 md:mt-40 mt-56 w-full bg-gradient-to-br from-gray-50 via-blue-200 to-indigo-200">
+        <div className="flex flex-col gap-4 justify-center items-center">
+          <h1 className="text-center lg:text-4xl text-2xl font-bold">Ready to enhance image with <span className="text-blue-600">PicWish</span>?</h1>
+          <button className="flex items-center justify-center w-52 m-12 p-4 rounded-full text-white font-bold animate-bounce  bg-gradient-to-l from-blue-600 to-blue-400">Start Now</button>
+        </div>
       </section>
     </main>
   );
