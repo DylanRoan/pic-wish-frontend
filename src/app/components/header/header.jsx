@@ -33,8 +33,8 @@ export default function Header() {
             </ul>
         </aside>
         <aside className="login-btns">
-          <a className="login">Login</a>
-          <a className="signup">Sign up</a>
+          <a className="login cursor-pointer">Login</a>
+          <a className="signup cursor-pointer hover:-translate-y-1 transition-all duration-200 ease-in-out">Sign up</a>
         </aside>
 
         {/* Header content on smaller (1024px >) breakpoints */}

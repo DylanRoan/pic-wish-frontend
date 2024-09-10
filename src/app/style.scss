@@ -1,0 +1,11 @@
+#marque-brands {
+    background-image: url('/brands-marquee.png');
+    background-size: cover;
+    animation: marquee 120s linear infinite;
+}
+
+@keyframes marquee {
+    100% {
+        background-position-x: 3200px;
+    }
+}
