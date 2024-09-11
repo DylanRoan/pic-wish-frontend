@@ -188,11 +188,15 @@ export default function EnhanceImageSection({ children }) {
                         { error && (<p className="absolute -bottom-1/3 text-red-600 font-bold text-sm">{error}</p>)}
                     </label>
                     <input type="file" id="file_upload" name="file_upload" onChange={onFileChange} hidden={true}></input>
-                    {/* TODO | href should be the base64 image link  */}
-                    <a href={receivedFile} download={'enhanced'} className="p-4 text-sm text-white font-bold rounded-full bg-gradient-to-r hover:bg-gradient-to-l hover:-translate-y-1 from-blue-400 to-blue-600 transition-all ease-in-out duration-200">
-                        <FontAwesomeIcon icon={faDownload} className="mr-1"></FontAwesomeIcon>
-                        Download Image
-                    </a>
+                    {/* TODO | Download should change file name */}
+                    {
+                        receivedFile && (
+                        <a href={receivedFile} download={'enhanced'} className="p-4 text-sm text-white font-bold rounded-full bg-gradient-to-r hover:bg-gradient-to-l hover:-translate-y-1 from-blue-400 to-blue-600 transition-all ease-in-out duration-200">
+                            <FontAwesomeIcon icon={faDownload} className="mr-1"></FontAwesomeIcon>
+                            Download Image
+                        </a>
+                        )
+                    }
                 </div>
             </div>
         </section>
