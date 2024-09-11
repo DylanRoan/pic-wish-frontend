@@ -3,16 +3,28 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './style.scss'
 import { faAngleUp, faBars, faCaretUp, faX } from '@fortawesome/free-solid-svg-icons'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function Header() {
     const [navbarState, setNavbar] = useState(false)
+    const [loggedin, setLoggedin] = useState(false)
+
+    useEffect(() => {
+        const jwt_token = localStorage.getItem('jwt_token')
+        if (jwt_token !== null)
+            setLoggedin(true)
+    }, [])
+
+    const logout = () => {
+        localStorage.removeItem('jwt_token')
+        setLoggedin(false)
+    }
 
     return (
         <header className='fixed w-screen bg-white z-50'>
         {/* Header content on Large (1024px) breakpoints */}
         <aside className="content-btns">
-            <img className='header-logo' src='https://cfcdn.apowersoft.info/astro/picwish/_astro/logo-en.9dfbfa39.svg'></img>
+            <h1 className='text-2xl font-bold'>Image Enhancer</h1>
             {/* Hide on smaller breakpoints (1024 >) */}
             <ul>
                 <DropDownComponent name={'AI Tools'}>
@@ -32,10 +44,21 @@ export default function Header() {
                 </li>
             </ul>
         </aside>
-        <aside className="login-btns">
-          <a className="login cursor-pointer">Login</a>
-          <a className="signup cursor-pointer hover:-translate-y-1 transition-all duration-200 ease-in-out">Sign up</a>
-        </aside>
+        {
+            !loggedin && (
+                <aside className="login-btns">
+                    <a href='/login' className="login cursor-pointer hover:text-blue-600 transition-all duration-200 ease-in-out">Login</a>
+                    <a href='/register' className="signup cursor-pointer hover:-translate-y-1 transition-all duration-200 ease-in-out">Sign up</a>
+                </aside>
+            )
+        }
+        {
+            loggedin && (
+                <aside className="login-btns">
+                    <button onClick={logout} className="login cursor-pointer hover:text-blue-600 transition-all duration-200 ease-in-out">Logout</button>
+                </aside>
+            )
+        }
 
         {/* Header content on smaller (1024px >) breakpoints */}
         <aside className="lg:hidden flex">

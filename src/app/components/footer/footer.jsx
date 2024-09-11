@@ -19,7 +19,7 @@ export default function Footer() {
                         <FontAwesomeIcon className="h-full opacity-50" icon={faYoutube}></FontAwesomeIcon>
                     </div>
                     <div className="flex gap-2">
-                        <label for="language">Language:</label>
+                        <label htmlFor="language">Language:</label>
                         <select className="text-black" id="language" name="language">
                             <option value="en">English</option>
                             <option value="ar">Arabic</option>

@@ -14,3 +14,9 @@ body {
     min-width: 320px;
     overflow-x: hidden;
 }
+
+.not-found {
+  background-image: url('/background-hero@login.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}

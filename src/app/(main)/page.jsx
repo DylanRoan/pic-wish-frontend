@@ -3,9 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import './style.scss'
 import { faGooglePlay, faWindows } from "@fortawesome/free-brands-svg-icons";
-import SwiperSlideshow, { SwiperReviewsSlideshow } from "./components/swiper/swiper";
+import SwiperSlideshow, { SwiperReviewsSlideshow } from "../components/swiper/swiper";
 import { ReactCompareSlider, ReactCompareSliderImage } from "react-compare-slider";
-import WindowsDownload from "./components/app-download/app-download";
+import WindowsDownload from "../components/app-download/app-download";
+import EnhanceImageSection from "../components/enhance-image-page/enhance-image";
 
 
 export default function Home() {
@@ -18,75 +19,8 @@ export default function Home() {
       </div>
 
       {/* Main Section */}
-      <section className="flex flex-col items-center lg:pt-[180px] pt-[50px] w-full">
-        {/* App ad / Hide on desktop */}
-        <section className="lg:hidden w-full flex bg-gradient-to-l from-blue-600 to-blue-400 p-6 flex items-center justify-between mb-[75px]">
-          <div className="flex gap-4">
-            <img src="picwishapp.svg"></img>
-            <div>
-              <h3 className="text-sm text-white font-bold">PicWish - AI Photo Editor</h3>
-              <img src="https://cfcdn.apowersoft.info/astro/picwish/_astro/index-top-banner-star.dd8cfacc.svg"></img>
-              <p className="text-xs text-white">Download on Play Store</p>
-            </div>
-          </div>
-          <a className="text-blue-600 text-xs bg-white p-2 rounded-2xl font-bold w-24 text-center">Free Trial</a>
-        </section>
-        
-        {/* Download link / web tools link */}
-        <section className="flex lg:flex-row flex-col gap-8 w-[90%]">
-          <aside className="flex-1 flex flex-col justify-center lg:items-baseline items-center">
-            <h1 className="lg:text-left text-center lg:text-5xl text-3xl font-bold">AI Photo Enhancer<br></br><span className="text-blue-600">Free to Use</span>
-            </h1>
-            <p className="lg:text-left text-center text-base my-8 opacity-50 font-medium w-4/5">Make blurry picture clear in seconds with PicWish AI photo enhancer. Improve image resolution and quality effortlessly.</p>
-            <div className="flex lg:flex-row flex-col gap-6 items-center w-full">
-              <button className="flex-1 flex flex-col items-center justify-center web-link bg-gradient-to-r hover:bg-gradient-to-l from-blue-200 to-blue-600 rounded-full lg:w-auto w-[250px] min-h transition-all duration-200 ease-in-out px-2 py-4">
-                <p className='text-xl text-white font-bold'><FontAwesomeIcon icon={faUpload} className="mr-1" />Upload Image</p>
-                <p className="text-xs text-white lg:block hidden">Drop, past image, or URL</p>
-              </button>
-              <button className="flex-1 lg:hidden block google-play bg-black rounded-full lg:w-auto w-[250px] text-white flex items-center justify-center gap-5 py-2">
-                <img src="googleplay.svg" className="h-full w-8"></img>
-                <div className="text-left">
-                  <p className="text-sm whitespace-nowrap">Get it on</p>
-                  <p className="text-lg whitespace-nowrap">Google Play</p>
-                </div>
-              </button>
-              <WindowsDownload></WindowsDownload>
-            </div>
-          </aside>
-          <aside className="flex-1 flex items-center justify-center ">
-              <div className="border-2 border-solid border-white shadow rounded-3xl overflow-hidden">
-                <ReactCompareSlider
-                itemOne={<ReactCompareSliderImage src="https://cfcdn.apowersoft.info/astro/picwish/_astro/banner-img-before.f02572d6.png" alt="1"></ReactCompareSliderImage>}
-                itemTwo={<ReactCompareSliderImage src="https://cfcdn.apowersoft.info/astro/picwish/_astro/banner-img-after.a6d47906.png" alt="2" ></ReactCompareSliderImage>}
-                
-                className="w-full h-full"></ReactCompareSlider>
-              </div>
-          </aside>
-        </section>
-        
-        {/* Displayed data */}
-        <section className="w-[90%] my-24 py-8 rounded-2xl border-[1px] border-solid border-white flex lg:flex-row flex-col justify-center items-center shadow backdrop-blur-xl backdrop-filter">
-            <div className="w-max my-6 mx-8 flex flex-col items-center">
-              <div className="font-bold text-base"><span className="text-4xl">120</span>M+</div>
-              <div className="text-sm text-center">Images Processed</div>
-            </div>
-
-            <div className="w-max my-6 mx-8 flex flex-col items-center">
-              <div className="font-bold text-base"><span className="text-4xl">37</span>M+</div>
-              <div className="text-sm text-center">Happy Users</div>
-            </div>
-
-            <div className="w-max my-6 mx-8 flex flex-col items-center">
-              <div className="font-bold text-base"><span className="text-4xl">3</span>Secs</div>
-              <div className="text-sm text-center">AI Processing</div>
-            </div>
-
-            <div className="w-max my-6 mx-8 flex flex-col items-center">
-              <div className="font-bold text-base"><span className="text-4xl">10</span>X</div>
-              <div className="text-sm text-center">Faster Photo Editing</div>
-            </div>
-        </section>
-      </section>
+      <EnhanceImageSection></EnhanceImageSection>
+      
 
       {/* AI Enhancer */}
       <section className="flex lg:flex-row flex-col-reverse items-center py-12 gap-4">
