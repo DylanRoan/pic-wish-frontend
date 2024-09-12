@@ -97,7 +97,7 @@ export default function EnhanceImageSection({ children }) {
             image: base64String
         }
 
-        //make post request to API
+        //make post request to API to enhance image
         try {
             await fetch('https://v1.test.socket.araby.ai/enhance-image', {
                 method: 'POST',
@@ -112,15 +112,28 @@ export default function EnhanceImageSection({ children }) {
                 if (data.error === true)
                 {
                     setError(data.message)
+                    setLoading(false)
                     return
                 }
                 if (!data.status)
                 {
                     setError(data.error[0])
+                    setLoading(false)
                     return
                 }
-                setReceivedFile(data.urls[0])
-                setLoading(false)
+
+                //fetch image -> blob -> object url
+                fetch(data.urls[0])
+                .then(response => response.blob())
+                .then(blob => URL.createObjectURL(blob))
+                .then(url => {
+                    setReceivedFile(url)
+                    setLoading(false)
+                })
+                .catch(error => {
+                    setError(error.message)
+                    setLoading(false)
+                })
             })
             .catch(error => {
                 setError(error.message)
@@ -181,23 +194,22 @@ export default function EnhanceImageSection({ children }) {
                     )
                 }
                 </div>
-                <div className="lg:w-2/5 flex flex-col items-center justify-center gap-8 lg:p-none p-8">
-                    <h1 className="font-bold text-2xl">Image Enhancer</h1>
-                    <label htmlFor="file_upload" className="relative cursor-pointer flex flex-col items-center justify-center bg-gradient-to-r hover:bg-gradient-to-l from-blue-400 to-blue-600 rounded-full min-h transition-all duration-200 ease-in-out p-4 hover:-translate-y-1">
-                        <p className='text-white font-bold text-sm'><FontAwesomeIcon icon={faUpload} className="mr-1" />Upload Image</p>
-                        { error && (<p className="absolute -bottom-1/3 text-red-600 font-bold text-sm">{error}</p>)}
-                    </label>
-                    <input type="file" id="file_upload" name="file_upload" onChange={onFileChange} hidden={true}></input>
-                    {/* TODO | Download should change file name */}
-                    {
-                        receivedFile && (
-                        <a href={receivedFile} download={'enhanced'} className="p-4 text-sm text-white font-bold rounded-full bg-gradient-to-r hover:bg-gradient-to-l hover:-translate-y-1 from-blue-400 to-blue-600 transition-all ease-in-out duration-200">
+                {
+                    receivedFile && (
+                    <div className="lg:w-2/5 flex flex-col items-center justify-center gap-8 lg:p-none p-8">
+                        <h1 className="font-bold text-2xl">Image Enhancer</h1>
+                        <label htmlFor="file_upload" className="relative cursor-pointer flex flex-col items-center justify-center bg-gradient-to-r hover:bg-gradient-to-l from-blue-400 to-blue-600 rounded-full min-h transition-all duration-200 ease-in-out p-4 hover:-translate-y-1">
+                            <p className='text-white font-bold text-sm'><FontAwesomeIcon icon={faUpload} className="mr-1" />Upload Image</p>
+                            { error && (<p className="absolute -bottom-1/3 text-red-600 font-bold text-sm">{error}</p>)}
+                        </label>
+                        <input type="file" id="file_upload" name="file_upload" onChange={onFileChange} hidden={true}></input>
+                        <a href={receivedFile} download={`enhanced-image.jpg`} className="p-4 text-sm text-white font-bold rounded-full bg-gradient-to-r hover:bg-gradient-to-l hover:-translate-y-1 from-blue-400 to-blue-600 transition-all ease-in-out duration-200">
                             <FontAwesomeIcon icon={faDownload} className="mr-1"></FontAwesomeIcon>
                             Download Image
                         </a>
-                        )
-                    }
-                </div>
+                    </div>
+                    )
+                }
             </div>
         </section>
     )
